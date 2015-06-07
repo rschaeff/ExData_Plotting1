@@ -14,6 +14,8 @@ sub_data$timestamp <- strptime(paste(sub_data$Date, sub_data$Time), "%Y-%m-%d %H
 
 png(filename = "plot4.png", width = 480, height = 480)
 
+par(mfrow = c(2,2))
+
 with(sub_data, { 
   plot(sub_data$timestamp, sub_data$Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)")
   plot(sub_data$timestamp, sub_data$Voltage, type="l", xlab="datetime", ylab="Voltage")
@@ -23,3 +25,4 @@ with(sub_data, {
   legend("topright", lty=1, col=c("black", "red", "blue"), bty="n", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
   plot(sub_data$timestamp, sub_data$Global_reactive_power,xlab="datetime", ylab="Global_reactive_power", type="l")
 })
+dev.off()
